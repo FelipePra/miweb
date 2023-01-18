@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/sweetalert.min.js' %}"></script>
+</head>
+<body>
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Sistema</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Persona</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/create">Crear Persona</a></li>
+              <li><a class="dropdown-item" href="/lista">Listar Persona</a></li>
+            </ul>
+          </li>
+        </ul>
+        <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Producto</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="/crearproducto">Crear Producto</a></li>
+                <li><a class="dropdown-item" href="/listaproducto">Lista Productos</a></li>
+                <li><a class="dropdown-item" href="/filtroproducto">Filtro Marca</a></li>
+              </ul>
+            </li>
+          </ul>
+      </div>
+    </div>
+  </nav>
+    <div class="container mt-3">
+        {% block contenido %}
+        {% endblock %}
+    </div>
+</body>
+</html>

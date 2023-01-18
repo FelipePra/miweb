@@ -1,0 +1,24 @@
+{% extends 'masterTemplate.html' %}
+{% block contenido %}
+
+<h1>Formulario de Registro</h1>
+<hr>
+<div>
+    <form method="post">
+        {% csrf_token %}
+        <label> Nombre</label>
+        <input type="text" class="form-control" name="nombre">
+        <input type="submit" onclick="return ValidarCampo()" value="Guardar" class="btn btn-success">
+    </form>
+</div>
+<script>
+    function ValidarCampo(){
+        let error = ''
+        if (document.getElementById('Nombre').value.trim() == '')
+        error = 'Debe ingresar un nombre'
+        if (error != '')(
+            alert(error)
+        )
+    }
+</script>
+{% endblock %}

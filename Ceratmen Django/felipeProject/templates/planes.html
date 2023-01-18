@@ -1,0 +1,110 @@
+{% extends 'MasterTemplate.html' %}
+{% block contentBody %}
+<h1 class="alert alert-success">Contrato de Plan</h1>
+<hr>
+<form method="post">
+    {% csrf_token %}
+    <div>
+        <label class="mt-3">Run:</label>
+        <input type="text" name="run" class="form-control" id="run">
+        <script>
+            function validarCampo(){
+              let error = ''
+              if(document.getElementById('run').value.trim() == '')
+                error = 'Debe ingresar un run'
+              if(error != ''){
+                alert(error)
+                return false
+              }
+            }
+          </script>
+    </div>
+    <div>
+        <label class="mt-3">Nombre:</label>
+        <input type="text" name="nombre" class="form-control" id="nombre">
+        <script>
+            function validarCampo(){
+              let error = ''
+              if(document.getElementById('nombre').value.trim() == '')
+                error = 'Debe ingresar un nombre'
+              if(error != ''){
+                alert(error)
+                return false
+              }
+            }
+          </script>
+    </div>
+    <div>
+        <label class="mt-3">Telefono:</label>
+        <input type="text" name="fono" class="form-control" id="fono">
+        <script>
+            function validarCampo(){
+              let error = ''
+              if(document.getElementById('fono').value.trim() == '')
+                error = 'Debe ingresar un numero de Telefono'
+              if(error != ''){
+                alert(error)
+                return false
+              }
+            }
+          </script>
+    </div>
+    <div>
+        <label class="mt-3">Email:</label>
+        <input type="text" name="mail" class="form-control" id="mail">
+        <script>
+            function validarCampo(){
+              let error = ''
+              if(document.getElementById('mail').value.trim() == '')
+                error = 'Debe ingresar un Email'
+              if(error != ''){
+                alert(error)
+                return false
+              }
+            }
+          </script>
+    </div>
+    <div>
+        <label class="mt-3">Direccion:</label>
+        <input type="text" name="direccion" class="form-control" id="direccion">
+        <script>
+            function validarCampo(){
+              let error = ''
+              if(document.getElementById('nombre').value.trim() == '')
+                error = 'Debe ingresar una Direccion'
+              if(error != ''){
+                alert(error)
+                return false
+              }
+            }
+          </script>
+    </div>
+    <div>
+        <select name="planes" id="planes">
+            <option selected disabled>Seleccione su plan</option>
+            <option value="S">Plan S $15.990</option>
+            <option value="M">Plan M $19.990</option>
+            <option value="L">Plan L $29.990</option>
+        </select>
+        <script>
+            function validarCampo(){
+              let error = ''
+              if(document.getElementById('planes').value.trim() == '')
+                error = 'Seleccione un plan'
+              if(error != ''){
+                alert(error)
+                return false
+              }
+            }
+          </script>
+    </div>
+    <hr>
+    <label>Comentario</label>
+    <textarea name="comentario" id="comentario" cols="30" class="form-control"></textarea>
+    <hr>
+    <div class="text-center">
+        <input type="submit" onclick="return validarCampo()" value="Guardar" class="btn btn-primary">
+        <input type="reset" value="Limpiar" class="btn btn-outline-secundary">
+    </div>
+</form>
+{% endblock %}

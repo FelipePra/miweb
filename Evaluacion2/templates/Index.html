@@ -1,0 +1,25 @@
+{% extends 'MasterTemplate.html' %}
+{% block contenido %}
+{%if especie %}
+<h1 class="mt-3 alert alert-success text-center">Lista Especie</h1>
+<div class="text-end mb-3">
+    <a href="/ingresarespecie" class="btn btn-primary">Crear Especie</a>
+</div>
+    <table class="table"> 
+        <thead>
+            <tr>
+                <th>Especie</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for e in especie %}
+            <tr>
+                <td>{{ e.especie}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <div class="alert alert-warning">No existen registros</div>
+    {% endif %}
+{% endblock %}

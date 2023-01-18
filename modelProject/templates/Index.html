@@ -1,0 +1,55 @@
+{% extends 'MasterTemplate.html' %} {% block contenido %}
+{% if messages %}
+{% for msj in messages %}
+<script>
+  swal('{{msj}}','hola','success')
+</script>
+{% endfor %}
+{% endif %}
+<h1 class="mt-3 alert alert-success text-center">Lista Persona</h1>
+<div class="text-end mb-3">
+    <a href="/create" class="btn btn-primary">Crear Persona</a>
+</div>
+{%if personas %}    
+    <table class="table table-bordered table-striped"> 
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Fecha Nacimiento</th>
+                <th>Direccion</th>
+                <th>Telefono</th>
+                <th>Email</th>
+                <th>Estadp Civil</th>
+                <th>Observacion</th>
+                <th>Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for p in personas %}
+            <tr>
+                <td>{{ p.nombre}}</td>
+                <td>{{ p.fecha_nacimiento}}</td>
+                <td>{{ p.direccion}}</td>
+                <td>{{ p.fono}}</td>
+                <td>{{ p.email}}</td>
+                <td>{{ p.estado_civil}}</td>
+                <td>{{ p.observacion}}</td>
+                <td>
+                    {% if p.estado == null %}
+                    <span class="badge bg-success">Activo</span>
+                    {% else %}
+                    <span class="badge bg-success">Inactivo</span>
+                    {% endif %}
+                </td>
+                <td>
+                    <a href="/eliminar/{{p.id}}" class="btn btn-danger">Eliminar</a>
+                    <a href="/editar/{{p.id}}" class="btn btn-warning">Editar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <div class="alert alert-warning">No existen registros</div>
+    {% endif %}
+{% endblock %}

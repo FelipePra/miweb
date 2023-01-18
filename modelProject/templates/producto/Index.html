@@ -1,0 +1,40 @@
+{% extends 'MasterTemplate.html' %}
+{% block contenido %}
+{%if productos %}
+<h1 class="mt-3 alert alert-success text-center">Lista de Productos</h1>
+<div class="text-end mb-3">
+    <a href="/crearproducto" class="btn btn-primary">Crear Producto</a>
+</div>
+    <table class="table table-bordered table-striped"> 
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Stock</th>
+                <th>Marca</th>
+                <th>Categoria</th>
+                <th>Descripcion</th>
+                <th>Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for p in productos %}
+            <tr>
+                <td>{{ p.nombre}}</td>
+                <td>{{ p.precio}}</td>
+                <td>{{ p.stock}}</td>
+                <td>{{ p.marca}}</td>
+                <td>{{ p.categoria}}</td>
+                <td>{{ p.descripcion}}</td>
+                <td>
+                    <a href="/eliminar/{{p.id}}" class="btn btn-danger">Eliminar</a>
+                    <a href="/editar/{{p.id}}" class="btn btn-warning">Editar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <div class="alert alert-warning">No existen registros</div>
+    {% endif %}
+{% endblock %}

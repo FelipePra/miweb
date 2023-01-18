@@ -1,0 +1,64 @@
+{% extends 'MasterTemplate.html' %}
+{% block contenido %}
+<h1 class="mt-3 alert alert-success text-center">Productos</h1>
+
+<form method="post">
+    {% csrf_token %}
+    <div class="input-group mb-3">
+        <span class="input-group-text">Marcas</span>
+        {{ form.marcas}}
+        <span class="input-group-text">Categorias</span>
+        {{ form.categorias}}
+        <input type="submit" value="Buscar",class='btn btn-success'>
+    </div>
+</form>
+
+<hr>
+{%if productos %}
+<input type="button" class="btn btn-secondary" value="Exportar a Excel" onclick="exportar()" />
+    <table class="table table-bordered table-striped"> 
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Stock</th>
+                <th>Marca</th>
+                <th>Categoria</th>
+                <th>Descripcion</th>
+                <th>Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for p in productos %}
+            <tr>
+                <td>{{ p.nombre}}</td>
+                <td>{{ p.precio}}</td>
+                <td>{{ p.stock}}</td>
+                <td>{{ p.marca}}</td>
+                <td>{{ p.categoria}}</td>
+                <td>{{ p.descripcion}}</td>
+                <td>
+                    <a href="/eliminar/{{p.id}}" class="btn btn-danger">Eliminar</a>
+                    <a href="/editar/{{p.id}}" class="btn btn-warning">Editar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <div class="alert alert-warning">No existen registros</div>
+    {% endif %}
+    <script>
+        const exportar = () => {
+            let marca = document.getElementById('id_marcas').value
+            let cat = document.getElementById('id_categorias').value
+            if (marca == '')
+                marca = 0
+            if (cat == '')
+                cat = 0
+
+            const ruta = '/exportexcel/'+marca+'/'+cat
+            open(ruta,'_self')
+        }
+    </script>
+{% endblock %}

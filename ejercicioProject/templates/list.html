@@ -1,0 +1,7 @@
+{% extends 'masterTemplate.html' %}
+{% block contentBody %}
+    <h1 class="alert alert-warning">Lista Empleados</h1>
+    <div>
+        {{ empleados | safe}}
+    </div>
+{% endblock %}
